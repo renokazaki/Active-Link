@@ -1,3 +1,4 @@
+```mermaid
 erDiagram
     User ||--o{ Post : creates
     User ||--o{ Activity : logs
@@ -54,3 +55,4 @@ erDiagram
         date createdAt
         date updatedAt
     }
+```
