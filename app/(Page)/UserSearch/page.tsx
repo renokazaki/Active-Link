@@ -10,7 +10,9 @@ type User = {
 
 export default function UserSearch() {
   const [searchQuery, setSearchQuery] = useState("");
-  const [users, setUsers] = useState<User[]>([
+  //const [users, setUsers] = useState<User[]>([
+
+  const [users] = useState<User[]>([
     {
       id: "1",
       name: "佐藤一郎",
