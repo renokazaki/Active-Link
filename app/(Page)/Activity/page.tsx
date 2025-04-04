@@ -11,7 +11,9 @@ type Friend = {
 };
 
 export default function Activity() {
-  const [friends, setFriends] = useState<Friend[]>([
+  //const [friends,setFriends] = useState<Friend[]>([
+
+  const [friends] = useState<Friend[]>([
     {
       id: "1",
       name: "山田太郎",
