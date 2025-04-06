@@ -2,29 +2,23 @@
 
 import { useState } from "react";
 import Link from "next/link";
-
-type Friend = {
-  id: string;
-  name: string;
-  status: "active" | "inactive";
-  lastActive: string;
-};
+import { User } from "@/shared/types/type";
 
 export default function Activity() {
-  //const [friends,setFriends] = useState<Friend[]>([
-
-  const [friends] = useState<Friend[]>([
+  const [friends] = useState<User[]>([
     {
       id: "1",
       name: "山田太郎",
       status: "active",
       lastActive: "2分前",
+      img: "/placeholder.svg?height=40&width=40",
     },
     {
       id: "2",
       name: "鈴木花子",
       status: "inactive",
       lastActive: "1時間前",
+      img: "/placeholder.svg?height=40&width=40",
     },
     // {
     //   id: "3",
@@ -53,7 +47,7 @@ export default function Activity() {
   ]);
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 p-8">
       <h1 className="text-2xl font-bold mb-6">友達一覧</h1>
       <div className="grid gap-4">
         {friends.map((friend) => (
@@ -62,9 +56,16 @@ export default function Activity() {
             href={`/Activity/Friends/${friend.id}`}
             className="block"
           >
-            <div className="bg-white rounded-lg shadow p-4 flex items-center justify-between hover:bg-gray-50 transition-colors">
+            <div className="bg-gray-100 rounded-lg shadow p-4 flex items-center justify-between hover:bg-gray-50 transition-colors">
               <div>
-                <h3 className="font-medium">{friend.name}</h3>
+                <div className="flex items-center gap-2">
+                  <img
+                    src={friend.img}
+                    alt={friend.name}
+                    className="w-10 h-10 rounded-full"
+                  />
+                  <h3 className="font-medium">{friend.name}</h3>
+                </div>
                 <p className="text-sm text-gray-500">
                   {friend.status === "active" ? (
                     <span>活動中</span>
