@@ -3,15 +3,15 @@ import Link from "next/link";
 export default function Header() {
   const navigation = [
     { name: "ホーム", href: "/" },
-    { name: "アクティブ", href: "/Activity" },
+    { name: "アクティビティ", href: "/Activity" },
     { name: "ユーザー検索", href: "/UserSearch" },
   ];
 
   return (
-    <div className="w-full px-4 sm:px-6 lg:px-8">
+    <div className="w-full px-4 sm:px-6 lg:px-8 bg-white">
       <div className="flex justify-between items-center h-12">
         <div className="flex">
-          <nav className="ml-2 flex space-x-8">
+          <nav className="ml-2 text-lg font-medium flex space-x-8 text-blue-500">
             {navigation.map((item) => (
               <Link
                 key={item.href}
