@@ -1,57 +1,47 @@
 ```mermaid
 erDiagram
-    User ||--o{ Post : creates
-    User ||--o{ Activity : logs
+    users ||--o{ activities : "活動履歴"
     
-    User ||--o{ Follow : "is follower"
-    User ||--o{ Follow : "is followed"
+    users ||--o{ follows : "リクエスト送信"
+    users ||--o{ follows : "リクエスト受信"
     
-    User ||--o{ Friendship : "sends request"
-    User ||--o{ Friendship : "receives request"
+    follows ||--o| friendships : "承認されると作成"
+
     
-    User {
+    users {
         string id PK
-        string username UK
-        string displayName
+        string user_name UK
+        string display_name
+        enum active
         string bio
-        string avatarUrl
+        string target
+        string avatar_url
         date createdAt
         date updatedAt
+        activities[] activities
     }
-    
-    Post {
+    activities {
         string id PK
         string userId FK
-        string content
-        string[] mediaUrls
-        date createdAt
-        date updatedAt
-    }
-    
-    Activity {
-        string id PK
-        string userId FK
-        string activityType
+        string date
+        datetime start_time
+        datetime end_time
         string description
-        datetime startTime
-        datetime endTime
-        boolean isActive
         date createdAt
         date updatedAt
     }
-    
-    Follow {
+    follows {
         string id PK
-        string followerId FK
-        string followingId FK
-        date createdAt
-    }
-    
-    Friendship {
-        string id PK
-        string requesterId FK
-        string addresseeId FK
+        string requester_id FK
+        string requested_id FK
         enum status
+        date createdAt
+        date updatedAt
+    }
+    friendships {
+        string id PK
+        string follower_id FK
+        string following_id FK
         date createdAt
         date updatedAt
     }
